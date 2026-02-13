@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KODE_ | Hardware</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
+        .neon-text { color: #39FF14; }
+        .tech-img { filter: grayscale(100%) contrast(1.1); border: 1px solid #333; transition: all 0.5s; }
+        .tech-img:hover { filter: grayscale(0%); border-color: #39FF14; }
+    </style>
+</head>
+<body>
+    <nav class="p-6 bg-black border-b border-gray-900 flex justify-between">
+        <a href="index.html" class="font-bold text-white">KODE<span class="neon-text">_</span></a>
+        <a href="index.html" class="text-gray-500 hover:text-[#39FF14] text-sm">< VOLVER</a>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <h1 class="text-5xl font-bold mb-4 text-white">HARDWARE <span class="neon-text">& GAMING</span></h1>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl">
+            Ingeniería de precisión. No ensamblamos piezas, construimos máquinas de guerra digital optimizadas para el máximo rendimiento.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-20">
+            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=1000&auto=format&fit=crop" class="tech-img w-full h-96 object-cover" alt="PC Build">
+            <div class="flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-white mb-4">// SERVICIOS TÁCTICOS</h3>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="border-l-2 border-[#39FF14] pl-4">
+                        <strong class="text-white block">Armado Master Race</strong>
+                        Selección de componentes, gestión de cables invisible y configuración de BIOS.
+                    </li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#39FF14] transition-colors">
+                        <strong class="text-white block">Mantenimiento Térmico</strong>
+                        Cambio de pasta térmica (Arctic/Thermal Grizzly), limpieza ultrasónica y optimización de flujo de aire.
+                    </li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#39FF14] transition-colors">
+                        <strong class="text-white block">Diagnóstico de Placa</strong>
+                        Reparación electrónica, reflow y detección de cortos en circuitos.
+                    </li>
+                </ul>
+                <a href="https://wa.me/56920120902?text=Hola KODE, necesito servicio de Hardware" class="mt-8 bg-[#39FF14] text-black font-bold py-3 px-6 text-center hover:opacity-90">COTIZAR BUILD</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

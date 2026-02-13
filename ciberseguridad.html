@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KODE_ | Security</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
+        .neon-red { color: #ff0055; text-shadow: 0 0 10px rgba(255, 0, 85, 0.6); }
+        .tech-img { filter: grayscale(100%) contrast(1.5) brightness(0.6); border: 1px solid #ff0055; transition: all 0.5s; }
+        .tech-img:hover { filter: grayscale(0%); }
+    </style>
+</head>
+<body>
+    <nav class="p-6 bg-black border-b border-gray-900 flex justify-between">
+        <a href="index.html" class="font-bold text-white">KODE<span class="text-[#39FF14]">_</span></a>
+        <a href="index.html" class="text-gray-500 hover:text-white text-sm">< VOLVER</a>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <h1 class="text-5xl font-bold mb-4 text-white">CIBER<span class="neon-red">SEGURIDAD</span></h1>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl">
+            El mundo digital es un campo de batalla. Nosotros somos tu escudo y tu espada. Protección ofensiva y defensiva.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-20">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop" class="tech-img w-full h-96 object-cover" alt="Hacker">
+            <div class="flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-white mb-4">// PROTOCOLOS DE DEFENSA</h3>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="border-l-2 border-[#ff0055] pl-4">
+                        <strong class="text-white block">Ethical Hacking (Pentesting)</strong>
+                        Simulamos ataques reales para encontrar tus debilidades antes que los criminales.
+                    </li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors">
+                        <strong class="text-white block">Eliminación de Malware</strong>
+                        Limpieza profunda de virus, ransomware y spyware persistente en sistemas críticos.
+                    </li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors">
+                        <strong class="text-white block">Informática Forense</strong>
+                        Recuperación de datos borrados o encriptados y análisis de intrusiones.
+                    </li>
+                </ul>
+                <a href="https://wa.me/56920120902?text=URGENTE: Necesito Ciberseguridad" class="mt-8 bg-[#ff0055] text-white font-bold py-3 px-6 text-center hover:bg-red-700">SOLICITAR AUDITORÍA</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
