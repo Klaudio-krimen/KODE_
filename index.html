@@ -13,6 +13,20 @@
         .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
         .glass-card { background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s; }
         .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); transform: translateY(-5px); }
+        
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 100;
+            background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); }
+
+        /* GLITCH TÍTULO */
+        .glitch-wrapper { display: inline-block; }
         .glitch { position: relative; color: white; mix-blend-mode: lighten; }
         .glitch:before, .glitch:after { content: attr(data-text); position: absolute; top: 0; width: 100%; height: 100%; background: #050505; }
         .glitch:before { left: 2px; text-shadow: -2px 0 #ff00c1; animation: glitch-anim 5s infinite alternate-reverse; clip: rect(44px, 450px, 56px, 0); }
@@ -34,27 +48,28 @@
 
     <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-16 text-center">
         <h1 class="glitch text-7xl md:text-9xl font-black tracking-tighter mb-8" data-text="KODE_">KODE_</h1>
+        
         <p class="text-gray-400 text-xl md:text-2xl mb-16 max-w-3xl">
             Infraestructura Digital Integral. <br>
             <span class="text-white font-bold">Selecciona tu Vector de Ataque:</span>
         </p>
 
         <div class="grid md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
-            <a href="hardware.html" class="glass-card p-8 group text-left relative overflow-hidden">
+            <a href="hardware.html" class="glass-card p-8 group text-left relative overflow-hidden cursor-pointer">
                 <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-microchip"></i></div>
                 <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">HARDWARE</h2>
                 <p class="text-sm text-gray-500">Armado, Modding y Mantenimiento Extremo.</p>
                 <div class="mt-4 text-[#39FF14] text-xs font-bold">ACCEDER ></div>
             </a>
 
-            <a href="web.html" class="glass-card p-8 group text-left relative overflow-hidden">
+            <a href="web.html" class="glass-card p-8 group text-left relative overflow-hidden cursor-pointer">
                 <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-code"></i></div>
                 <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">DEV WEB</h2>
                 <p class="text-sm text-gray-500">Desarrollo Full Stack y Presencia Digital.</p>
                 <div class="mt-4 text-[#39FF14] text-xs font-bold">ACCEDER ></div>
             </a>
 
-            <a href="ciberseguridad.html" class="glass-card p-8 group text-left relative overflow-hidden">
+            <a href="ciberseguridad.html" class="glass-card p-8 group text-left relative overflow-hidden cursor-pointer">
                 <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-user-secret"></i></div>
                 <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">SECURITY</h2>
                 <p class="text-sm text-gray-500">Defensa Activa, Pentesting y Datos.</p>
@@ -64,13 +79,23 @@
     </section>
 
     <section id="contacto" class="py-12 bg-black border-t border-gray-900 text-center">
+        <h3 class="text-white font-bold mb-6">INICIAR CONEXIÓN SEGURA</h3>
+        
+        <a href="https://wa.me/56920120902" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-black font-bold py-3 px-6 rounded mb-8 hover:bg-white transition-colors">
+            <i class="fa-brands fa-whatsapp text-xl"></i> HABLAR AHORA
+        </a>
+
         <div class="flex justify-center gap-6 text-2xl text-gray-500 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" class="hover:text-[#39FF14]"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" class="hover:text-[#39FF14]"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" class="hover:text-[#39FF14]"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-linkedin"></i></a>
         </div>
         <a href="mailto:contacto@kodesys.cl" class="text-gray-600 hover:text-white text-sm">contacto@kodesys.cl</a>
     </section>
+
+    <a href="https://wa.me/56920120902" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script>
         const c=document.getElementById('matrix'),x=c.getContext('2d');
