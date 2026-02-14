@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Flyers KODE_ v2 (Stable)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === CONFIGURACIÓN GENERAL === */
+        body { 
+            background-color: #222; 
+            font-family: 'JetBrains Mono', monospace; 
+            padding: 40px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 40px; 
+            justify-content: center; 
+        }
+        
+        /* === ESTRUCTURA DEL FLYER (Formato Historia/Estado) === */
+        .flyer {
+            width: 400px;
+            height: 711px; /* Aspecto 9:16 de celular */
+            background-color: #050505;
+            border: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        /* === FONDO CYBERPUNK (CSS PURO - SIN GIFS) === */
+        .cyber-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            /* Fondo negro base */
+            background-color: #000;
+            /* Patrón de líneas de escaneo horizontales */
+            background-image: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.8) 0px,
+                rgba(0, 0, 0, 0.8) 2px,
+                transparent 2px,
+                transparent 4px
+            ),
+            /* Patrón de rejilla vertical sutil */
+            linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+            
+            background-size: 100% 4px, 20px 100%; /* Tamaño de los patrones */
+            z-index: 0;
+        }
+        
+        /* Variaciones de color para el fondo de Seguridad */
+        .bg-red .cyber-bg {
+             background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.8) 0px, rgba(0,0,0,0.8) 2px, transparent 2px, transparent 4px),
+                               linear-gradient(90deg, rgba(255, 0, 85, 0.05) 1px, transparent 1px);
+        }
+
+        /* === CONTENIDO FRONTAL === */
+        .content { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; }
+        
+        /* Colores Neon */
+        .neon-green { color: #39FF14; text-shadow: 0 0 15px rgba(57, 255, 20, 0.8); }
+        .neon-red { color: #ff0055; text-shadow: 0 0 15px rgba(255, 0, 85, 0.8); }
+        
+        /* Header */
+        .logo-top { font-size: 1.8rem; font-weight: 800; color: white; border-bottom: 2px solid #333; padding-bottom: 15px; letter-spacing: 2px; }
+        
+        /* Icono Principal Animado */
+        .main-icon-container { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
+        .main-icon { 
+            font-size: 7rem; 
+            filter: drop-shadow(0 0 20px currentColor);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Textos */
+        .title { font-size: 3rem; line-height: 0.9; font-weight: 900; color: white; text-transform: uppercase; margin-bottom: 15px; }
+        .subtitle { font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; line-height: 1.4; border-left: 4px solid currentColor; padding-left: 15px; font-weight: bold; }
+        
+        /* Lista de características */
+        .features { list-style: none; padding: 0; margin-bottom: 2rem; }
+        .features li { color: #ddd; margin-bottom: 12px; font-size: 1rem; display: flex; align-items:center; font-weight: bold; }
+        .features li i { margin-right: 12px; font-size: 0.9rem; }
+
+        /* Botón Footer */
+        .footer { color: black; padding: 15px; text-align: center; font-weight: 900; font-size: 1.4rem; text-transform: uppercase; clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); }
+        
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
+    </style>
+</head>
+<body>
+
+    <div class="flyer">
+        <div class="cyber-bg"></div>
+        <div class="content">
+            <div class="logo-top">KODE<span class="neon-green">_</span>HUB</div>
+            <div class="main-icon-container">
+                <i class="fa-solid fa-network-wired main-icon neon-green"></i>
+            </div>
+            <h1 class="title">SOLUCIÓN<br><span class="neon-green">INTEGRAL</span></h1>
+            <p class="subtitle neon-green">Tu único proveedor de tecnología crítica.</p>
+            <ul class="features">
+                <li><i class="fa-solid fa-check neon-green"></i> Hardware & Gaming</li>
+                <li><i class="fa-solid fa-check neon-green"></i> Desarrollo Web</li>
+                <li><i class="fa-solid fa-check neon-green"></i> Ciberseguridad</li>
+            </ul>
+            <div class="footer" style="background: #39FF14;">CONTACTAR AHORA</div>
+        </div>
+    </div>
+
+    <div class="flyer">
+        <div class="cyber-bg"></div>
+        <div class="content">
+            <div class="logo-top">KODE<span class="neon-green">_</span>SYS</div>
+            <div class="main-icon-container">
+                <i class="fa-solid fa-microchip main-icon neon-green"></i>
+            </div>
+            <h1 class="title">HARDWARE<br><span class="neon-green">EXTREMO</span></h1>
+            <p class="subtitle neon-green">Ingeniería de precisión para máximo rendimiento.</p>
+            <ul class="features">
+                <li><i class="fa-solid fa-bolt neon-green"></i> Armado PC Master Race</li>
+                <li><i class="fa-solid fa-temperature-low neon-green"></i> Mantención Térmica Pro</li>
+                <li><i class="fa-solid fa-screwdriver-wrench neon-green"></i> Diagnóstico Avanzado</li>
+            </ul>
+            <div class="footer" style="background: #39FF14;">COTIZA TU BUILD</div>
+        </div>
+    </div>
+
+    <div class="flyer">
+        <div class="cyber-bg"></div>
+        <div class="content">
+            <div class="logo-top">KODE<span class="neon-green">_</span>DEV</div>
+            <div class="main-icon-container">
+                <i class="fa-solid fa-code main-icon neon-green"></i>
+            </div>
+            <h1 class="title">WEB<br><span class="neon-green">PROFESIONAL</span></h1>
+            <p class="subtitle neon-green">Tu identidad digital, rápida y segura.</p>
+            <ul class="features">
+                <li><i class="fa-solid fa-laptop-code neon-green"></i> Sitios Corporativos</li>
+                <li><i class="fa-solid fa-cart-shopping neon-green"></i> E-Commerce Blindado</li>
+                <li><i class="fa-brands fa-google neon-green"></i> Posicionamiento SEO</li>
+            </ul>
+            <div class="footer" style="background: #39FF14;">LLEVA TU NEGOCIO ONLINE</div>
+        </div>
+    </div>
+
+    <div class="flyer bg-red" style="border-color: #ff0055;">
+        <div class="cyber-bg"></div>
+        <div class="content">
+            <div class="logo-top">KODE<span class="neon-red">_</span>SEC</div>
+            <div class="main-icon-container">
+                <i class="fa-solid fa-shield-halved main-icon neon-red"></i>
+            </div>
+            <h1 class="title">CIBER<br><span class="neon-red">SEGURIDAD</span></h1>
+            <p class="subtitle neon-red">Defensa activa contra amenazas digitales.</p>
+            <ul class="features">
+                <li><i class="fa-solid fa-user-secret neon-red"></i> Ethical Hacking</li>
+                <li><i class="fa-solid fa-virus-slash neon-red"></i> Eliminación de Malware</li>
+                <li><i class="fa-solid fa-database neon-red"></i> Recuperación de Datos</li>
+            </ul>
+            <div class="footer" style="background: #ff0055; color:white;">SOLICITAR AUDITORÍA</div>
+        </div>
+    </div>
+
+    <div class="flyer">
+        <div class="cyber-bg"></div>
+        <div class="content">
+            <div class="logo-top">KODE<span class="neon-green">_</span>LEGACY</div>
+            <div class="main-icon-container">
+                <i class="fa-solid fa-timeline main-icon neon-green"></i>
+            </div>
+            <h1 class="title">15 AÑOS<br><span class="neon-green">EXPERIENCIA</span></h1>
+            <p class="subtitle neon-green">Evolución continua desde 2011.</p>
+            <ul class="features">
+                <li><i class="fa-solid fa-star neon-green"></i> Trayectoria Comprobada</li>
+                <li><i class="fa-solid fa-certificate neon-green"></i> Expertos Certificados</li>
+                <li><i class="fa-solid fa-handshake neon-green"></i> Confianza Total</li>
+            </ul>
+            <div class="footer" style="background: #39FF14;">CONOCE AL EQUIPO</div>
+        </div>
+    </div>
+
+</body>
+</html>

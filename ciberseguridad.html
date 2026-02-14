@@ -3,50 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Security</title>
+    <title>KODE_ | Ciberseguridad</title>
+    <meta name="description" content="Auditorías de Ciberseguridad, Ethical Hacking y Recuperación de Datos en Chile. Protege tu empresa con KODE.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
         .neon-red { color: #ff0055; text-shadow: 0 0 10px rgba(255, 0, 85, 0.6); }
         .tech-img { filter: grayscale(100%) contrast(1.5) brightness(0.6); border: 1px solid #ff0055; transition: all 0.5s; }
         .tech-img:hover { filter: grayscale(0%); }
+        #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
+        #mobile-menu.open { transform: translateY(0); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
-<body>
-    <nav class="p-6 bg-black border-b border-gray-900 flex justify-between">
-        <a href="index.html" class="font-bold text-white">KODE<span class="text-[#39FF14]">_</span></a>
-        <a href="index.html" class="text-gray-500 hover:text-white text-sm">< VOLVER</a>
+<body class="antialiased">
+    <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="text-[#39FF14]">_</span></a>
+            <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
+                <a href="ciberseguridad.html" class="text-[#ff0055]">[ SEGURIDAD ]</a>
+                <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#ff0055]">
+            <a href="index.html" class="text-white hover:text-[#ff0055]">HOME</a>
+            <a href="hardware.html" class="text-white hover:text-[#ff0055]">HARDWARE</a>
+            <a href="web.html" class="text-white hover:text-[#ff0055]">WEB DEV</a>
+            <a href="ciberseguridad.html" class="text-[#ff0055]">SEGURIDAD</a>
+            <a href="nosotros.html" class="text-white hover:text-[#ff0055]">NOSOTROS</a>
+        </div>
     </nav>
 
-    <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-6xl mx-auto px-6 py-24">
         <h1 class="text-5xl font-bold mb-4 text-white">CIBER<span class="neon-red">SEGURIDAD</span></h1>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl">
-            El mundo digital es un campo de batalla. Nosotros somos tu escudo y tu espada. Protección ofensiva y defensiva.
-        </p>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl">El mundo digital es un campo de batalla. Nosotros somos tu escudo. Protección ofensiva y defensiva.</p>
 
         <div class="grid md:grid-cols-2 gap-12 mb-20">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop" class="tech-img w-full h-96 object-cover" alt="Hacker">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop" class="tech-img w-full h-96 object-cover" alt="Hacker Security">
             <div class="flex flex-col justify-center">
                 <h3 class="text-2xl font-bold text-white mb-4">// PROTOCOLOS DE DEFENSA</h3>
                 <ul class="space-y-4 text-gray-400">
-                    <li class="border-l-2 border-[#ff0055] pl-4">
-                        <strong class="text-white block">Ethical Hacking (Pentesting)</strong>
-                        Simulamos ataques reales para encontrar tus debilidades antes que los criminales.
-                    </li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors">
-                        <strong class="text-white block">Eliminación de Malware</strong>
-                        Limpieza profunda de virus, ransomware y spyware persistente en sistemas críticos.
-                    </li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors">
-                        <strong class="text-white block">Informática Forense</strong>
-                        Recuperación de datos borrados o encriptados y análisis de intrusiones.
-                    </li>
+                    <li class="border-l-2 border-[#ff0055] pl-4"><strong class="text-white block">Ethical Hacking</strong>Simulamos ataques reales para encontrar tus debilidades antes que los criminales.</li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors"><strong class="text-white block">Eliminación de Malware</strong>Limpieza profunda de virus, ransomware y spyware.</li>
+                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors"><strong class="text-white block">Informática Forense</strong>Recuperación de datos borrados o encriptados.</li>
                 </ul>
-                <a href="https://wa.me/56920120902?text=URGENTE: Necesito Ciberseguridad" class="mt-8 bg-[#ff0055] text-white font-bold py-3 px-6 text-center hover:bg-red-700">SOLICITAR AUDITORÍA</a>
+                <a href="https://wa.me/56920120902?text=URGENTE: Necesito Ciberseguridad" target="_blank" rel="noopener noreferrer" class="mt-8 bg-[#ff0055] text-white font-bold py-3 px-6 text-center hover:bg-red-700 rounded">SOLICITAR AUDITORÍA</a>
             </div>
         </div>
     </div>
+    
+    <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) { mobileMenu.classList.add('open'); menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'; } 
+            else { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }
+        });
+    </script>
 </body>
 </html>

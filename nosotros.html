@@ -3,28 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Nosotros</title>
+    <title>KODE_ | Nosotros y Trayectoria</title>
+    <meta name="description" content="15 años de experiencia en tecnología. Conoce la historia de KODE SpA, desde el hardware hasta la ciberseguridad.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
-        .neon-text { color: #39FF14; }
+        .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
+        #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
+        #mobile-menu.open { transform: translateY(0); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
-<body>
-    <nav class="p-6 bg-black border-b border-gray-900 flex justify-between">
-        <a href="index.html" class="font-bold text-white">KODE<span class="neon-text">_</span></a>
-        <a href="index.html" class="text-gray-500 hover:text-[#39FF14] text-sm">< VOLVER</a>
+<body class="antialiased">
+    <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
+            <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
+                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+                <a href="nosotros.html" class="text-[#39FF14]">[ NOSOTROS ]</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
+            <a href="index.html" class="text-white hover:text-[#39FF14]">HOME</a>
+            <a href="hardware.html" class="text-white hover:text-[#39FF14]">HARDWARE</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
+            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
+            <a href="nosotros.html" class="text-[#39FF14]">NOSOTROS</a>
+        </div>
     </nav>
 
-    <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="max-w-4xl mx-auto px-6 py-24">
         <h1 class="text-5xl font-bold mb-4 text-white">15 AÑOS DE <span class="neon-text">CÓDIGO</span></h1>
         
         <div class="bg-[#111] p-8 border border-gray-800 mb-12">
-            <p class="text-lg text-gray-300 leading-relaxed italic">
-                "En KODE no nos limitamos a solucionar problemas; anticipamos el futuro. Lo que comenzó hace 15 años como una pasión por el hardware extremo, hoy es una firma consolidada de ingeniería digital."
-            </p>
+            <p class="text-lg text-gray-300 leading-relaxed italic">"En KODE no nos limitamos a solucionar problemas; anticipamos el futuro. Lo que comenzó hace 15 años como una pasión por el hardware extremo, hoy es una firma consolidada de ingeniería digital."</p>
         </div>
 
         <div class="border-l-2 border-gray-800 ml-4 space-y-12">
@@ -63,5 +83,18 @@
             </div>
         </div>
     </div>
+    
+    <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) { mobileMenu.classList.add('open'); menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'; } 
+            else { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }
+        });
+    </script>
 </body>
 </html>

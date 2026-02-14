@@ -3,140 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | HUB</title>
+    <title>KODE_ | Infraestructura Digital Integral</title>
+    <meta name="description" content="KODE_ SpA: Soluciones en Hardware Gaming, Desarrollo Web y Ciberseguridad. +15 años de experiencia en Chile.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* === ESTILOS BASE === */
-        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
-        canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; }
-        
-        /* === EFECTOS NEON === */
+        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; pointer-events: none; }
         .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
-        .glass-card { background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s; cursor: pointer; }
+        
+        /* Glassmorphism Cards */
+        .glass-card { 
+            background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease; 
+            cursor: pointer; position: relative; overflow: hidden;
+        }
         .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); transform: translateY(-5px); }
 
-        /* === TÍTULO GLITCH (CORREGIDO A KODE_) === */
-        .glitch-wrapper { display: inline-block; }
+        /* Glitch Title Fix */
         .glitch { position: relative; color: white; mix-blend-mode: lighten; }
-        .glitch:before, .glitch:after { 
-            content: "KODE_"; /* AQUÍ FORZAMOS EL TEXTO CORRECTO */
-            position: absolute; top: 0; width: 100%; height: 100%; background: #050505; 
-        }
-        .glitch:before { left: 2px; text-shadow: -2px 0 #ff00c1; animation: glitch-anim 5s infinite alternate-reverse; clip: rect(44px, 450px, 56px, 0); }
-        .glitch:after { left: -2px; text-shadow: -2px 0 #39FF14; animation: glitch-anim2 5s infinite alternate-reverse; clip: rect(44px, 450px, 56px, 0); }
-        @keyframes glitch-anim { 0% { clip: rect(30px, 9999px, 10px, 0); } 100% { clip: rect(20px, 9999px, 60px, 0); } }
-        @keyframes glitch-anim2 { 0% { clip: rect(15px, 9999px, 40px, 0); } 100% { clip: rect(60px, 9999px, 30px, 0); } }
+        .glitch::before, .glitch::after { content: "KODE_"; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050505; }
+        .glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip-path: inset(44% 0 56% 0); animation: glitch-anim 4s infinite alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 #39FF14; clip-path: inset(44% 0 56% 0); animation: glitch-anim2 4s infinite alternate-reverse; }
+        @keyframes glitch-anim { 0% { clip-path: inset(10% 0 80% 0); } 100% { clip-path: inset(80% 0 10% 0); } }
+        @keyframes glitch-anim2 { 0% { clip-path: inset(30% 0 60% 0); } 100% { clip-path: inset(60% 0 30% 0); } }
 
-        /* === BOTÓN FLOTANTE WHATSAPP (CORREGIDO) === */
+        /* Mobile Menu Transition */
+        #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
+        #mobile-menu.open { transform: translateY(0); }
+
+        /* WhatsApp Float */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999; /* Z-Index alto para estar sobre todo */
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-            text-decoration: none;
+            position: fixed; bottom: 30px; right: 30px; z-index: 50;
+            background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20bd5a;
-        }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body class="antialiased">
     <canvas id="matrix"></canvas>
 
-    <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/90 backdrop-blur-md px-6 py-4 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold tracking-widest text-white">KODE<span class="neon-text">_</span></a>
-        
-        <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
-            <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-            <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
-            <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
-            <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+    <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
+            
+            <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
+                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+                <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
+            <a href="hardware.html" class="text-white hover:text-[#39FF14]">HARDWARE</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
+            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
+            <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-20 text-center">
+    <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-12 text-center">
         <h1 class="glitch text-7xl md:text-9xl font-black tracking-tighter mb-8" data-text="KODE_">KODE_</h1>
-        
-        <p class="text-gray-400 text-xl md:text-2xl mb-16 max-w-3xl">
-            Infraestructura Digital Integral. <br>
-            <span class="text-white font-bold">Selecciona tu Vector de Ataque:</span>
-        </p>
+        <p class="text-gray-400 text-lg md:text-2xl mb-12 max-w-3xl">Infraestructura Digital Integral.<br><span class="text-white font-bold">Selecciona tu Vector de Ataque:</span></p>
 
         <div class="grid md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
-            
-            <a href="hardware.html" class="glass-card p-8 group text-left relative overflow-hidden block">
-                <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-microchip"></i></div>
-                <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">HARDWARE</h2>
-                <p class="text-sm text-gray-500">Armado, Modding y Mantenimiento Extremo.</p>
-                <div class="mt-4 text-[#39FF14] text-xs font-bold">ACCEDER ></div>
+            <a href="hardware.html" class="glass-card p-8 group text-left block rounded-sm">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">HARDWARE</h2>
+                    <i class="fa-solid fa-microchip text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">Armado Master Race, Modding y Mantenimiento.</p>
+                <span class="text-[#39FF14] text-xs font-bold tracking-widest">ACCEDER ></span>
             </a>
-
-            <a href="web.html" class="glass-card p-8 group text-left relative overflow-hidden block">
-                <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-code"></i></div>
-                <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">DEV WEB</h2>
-                <p class="text-sm text-gray-500">Desarrollo Full Stack y Presencia Digital.</p>
-                <div class="mt-4 text-[#39FF14] text-xs font-bold">ACCEDER ></div>
+            <a href="web.html" class="glass-card p-8 group text-left block rounded-sm">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">DEV WEB</h2>
+                    <i class="fa-solid fa-code text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">Sitios Corporativos, E-Commerce y SEO.</p>
+                <span class="text-[#39FF14] text-xs font-bold tracking-widest">ACCEDER ></span>
             </a>
-
-            <a href="ciberseguridad.html" class="glass-card p-8 group text-left relative overflow-hidden block">
-                <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl group-hover:text-[#39FF14] transition-colors"><i class="fa-solid fa-user-secret"></i></div>
-                <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-[#39FF14]">SECURITY</h2>
-                <p class="text-sm text-gray-500">Defensa Activa, Pentesting y Datos.</p>
-                <div class="mt-4 text-[#39FF14] text-xs font-bold">ACCEDER ></div>
+            <a href="ciberseguridad.html" class="glass-card p-8 group text-left block rounded-sm hover:border-[#ff0055]">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#ff0055]">SECURITY</h2>
+                    <i class="fa-solid fa-user-secret text-4xl text-gray-700 group-hover:text-[#ff0055]"></i>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">Defensa Activa, Pentesting y Datos.</p>
+                <span class="text-[#ff0055] text-xs font-bold tracking-widest">ACCEDER ></span>
             </a>
-
         </div>
         
-        <div class="mt-12">
-            <a href="nosotros.html" class="text-gray-500 hover:text-white border-b border-gray-600 hover:border-white pb-1 transition-all">
-                // Ver Trayectoria y Equipo
-            </a>
+        <div class="mt-16">
+            <a href="nosotros.html" class="text-gray-500 hover:text-white border-b border-gray-600 hover:border-white pb-1">// Ver Trayectoria (15 Años)</a>
         </div>
     </section>
 
-    <section class="py-12 bg-black border-t border-gray-900 text-center">
-        <div class="flex justify-center gap-6 text-2xl text-gray-500 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" class="hover:text-[#39FF14]"><i class="fa-brands fa-linkedin"></i></a>
+    <footer class="py-12 bg-black border-t border-gray-900 text-center z-10 relative">
+        <div class="flex justify-center gap-8 text-2xl text-gray-600 mb-8">
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-linkedin"></i></a>
         </div>
         <p class="text-gray-600 text-xs">© 2026 KODE SpA // Maipú, Chile.</p>
-    </section>
+    </footer>
 
-    <a href="https://wa.me/56920120902" target="_blank" class="whatsapp-float">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                mobileMenu.classList.add('open');
+                menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                mobileMenu.classList.remove('open');
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        });
+
+        // Optimized Matrix
         const c=document.getElementById('matrix'),x=c.getContext('2d');
-        c.width=window.innerWidth;c.height=window.innerHeight;
-        const chars='KODE_10'.split(''), font=14, col=c.width/font, drops=[];
-        for(let i=0;i<col;i++)drops[i]=1;
-        setInterval(()=>{
-            x.fillStyle='rgba(5,5,5,0.05)';x.fillRect(0,0,c.width,c.height);
+        let w,h,cols,drops;
+        const font=14;
+        const chars='KODE_01'.split('');
+        function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;cols=w/font;drops=Array(Math.ceil(cols)).fill(1);}
+        resize(); window.onresize=resize;
+        
+        function draw(){
+            x.fillStyle='rgba(5,5,5,0.05)';x.fillRect(0,0,w,h);
             x.fillStyle='#0F0';x.font=font+'px monospace';
             for(let i=0;i<drops.length;i++){
-                const t=chars[Math.floor(Math.random()*chars.length)];
-                x.fillText(t,i*font,drops[i]*font);
-                if(drops[i]*font>c.height&&Math.random()>0.975)drops[i]=0;drops[i]++;
+                x.fillText(chars[Math.floor(Math.random()*chars.length)],i*font,drops[i]*font);
+                if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;drops[i]++;
             }
-        },33);
-        window.onresize=()=>{c.width=window.innerWidth;c.height=window.innerHeight};
+            requestAnimationFrame(draw);
+        }
+        draw();
     </script>
 </body>
 </html>
