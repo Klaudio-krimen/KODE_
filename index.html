@@ -22,7 +22,7 @@
         }
         .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); transform: translateY(-5px); }
 
-        /* Glitch Title Fix */
+        /* Glitch Title Fix (Asegurado a KODE_) */
         .glitch { position: relative; color: white; mix-blend-mode: lighten; }
         .glitch::before, .glitch::after { content: "KODE_"; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050505; }
         .glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip-path: inset(44% 0 56% 0); animation: glitch-anim 4s infinite alternate-reverse; }
@@ -56,6 +56,7 @@
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
                 <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
+                <a href="planes.html" class="text-white hover:text-[#39FF14] transition-colors font-black">[ PLANES ]</a>
             </div>
 
             <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
@@ -66,6 +67,7 @@
             <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
             <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
             <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
+            <a href="planes.html" class="text-[#39FF14] border-b-2 border-[#39FF14] pb-1">PLANES & PRECIOS</a>
         </div>
     </nav>
 
@@ -100,8 +102,9 @@
             </a>
         </div>
         
-        <div class="mt-16">
-            <a href="nosotros.html" class="text-gray-500 hover:text-white border-b border-gray-600 hover:border-white pb-1">// Ver Trayectoria (15 Años)</a>
+        <div class="mt-16 flex gap-6 justify-center">
+            <a href="planes.html" class="text-black font-bold bg-[#39FF14] px-6 py-2 rounded hover:bg-white transition-colors">// VER PLANES Y PRECIOS</a>
+            <a href="nosotros.html" class="text-gray-500 hover:text-white border-b border-gray-600 hover:border-white pb-1 pt-2 transition-colors">15 Años de Trayectoria</a>
         </div>
     </section>
 
@@ -132,24 +135,40 @@
             }
         });
 
-        // Optimized Matrix
+        // Optimized Matrix (requestAnimationFrame)
         const c=document.getElementById('matrix'),x=c.getContext('2d');
         let w,h,cols,drops;
         const font=14;
         const chars='KODE_01'.split('');
-        function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;cols=w/font;drops=Array(Math.ceil(cols)).fill(1);}
-        resize(); window.onresize=resize;
+        
+        function resize(){
+            w=c.width=window.innerWidth;
+            h=c.height=window.innerHeight;
+            cols=w/font;
+            drops=Array(Math.ceil(cols)).fill(1);
+        }
+        
+        resize(); 
+        window.addEventListener('resize', resize);
+        
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         function draw(){
-            x.fillStyle='rgba(5,5,5,0.05)';x.fillRect(0,0,w,h);
-            x.fillStyle='#0F0';x.font=font+'px monospace';
+            if(prefersReducedMotion) return;
+            x.fillStyle='rgba(5,5,5,0.05)';
+            x.fillRect(0,0,w,h);
+            x.fillStyle='#0F0';
+            x.font=font+'px monospace';
+            
             for(let i=0;i<drops.length;i++){
                 x.fillText(chars[Math.floor(Math.random()*chars.length)],i*font,drops[i]*font);
-                if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;drops[i]++;
+                if(drops[i]*font>h&&Math.random()>0.975) drops[i]=0;
+                drops[i]++;
             }
             requestAnimationFrame(draw);
         }
-        draw();
+        
+        if(!prefersReducedMotion) draw();
     </script>
 </body>
 </html>
