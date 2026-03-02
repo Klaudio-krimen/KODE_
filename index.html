@@ -22,13 +22,17 @@
         }
         .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); transform: translateY(-5px); }
 
-        /* Glitch Title Fix (Asegurado a KODE_) */
-        .glitch { position: relative; color: white; mix-blend-mode: lighten; }
-        .glitch::before, .glitch::after { content: "KODE_"; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050505; }
+        /* Glitch Title Fix */
+        .glitch { position: relative; color: white; mix-blend-mode: lighten; display: inline-block; }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050505; }
         .glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip-path: inset(44% 0 56% 0); animation: glitch-anim 4s infinite alternate-reverse; }
         .glitch::after { left: -2px; text-shadow: -2px 0 #39FF14; clip-path: inset(44% 0 56% 0); animation: glitch-anim2 4s infinite alternate-reverse; }
         @keyframes glitch-anim { 0% { clip-path: inset(10% 0 80% 0); } 100% { clip-path: inset(80% 0 10% 0); } }
         @keyframes glitch-anim2 { 0% { clip-path: inset(30% 0 60% 0); } 100% { clip-path: inset(60% 0 30% 0); } }
+
+        /* === NUEVO: Animación Parpadeo Terminal === */
+        @keyframes blink { 50% { opacity: 0; } }
+        .terminal-blink { animation: blink 1s step-start infinite; }
 
         /* Mobile Menu Transition */
         #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
@@ -56,10 +60,10 @@
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
                 <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-                <a href="planes.html" class="text-white hover:text-[#39FF14] transition-colors font-black">[ PLANES ]</a>
+                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES & TI ]</a>
             </div>
 
-            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú de navegación"><i class="fa-solid fa-bars"></i></button>
         </div>
 
         <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
@@ -67,12 +71,16 @@
             <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
             <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
             <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
-            <a href="planes.html" class="text-[#39FF14] border-b-2 border-[#39FF14] pb-1">PLANES & PRECIOS</a>
+            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES & TI</a>
         </div>
     </nav>
 
     <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-12 text-center">
-        <h1 class="glitch text-7xl md:text-9xl font-black tracking-tighter mb-8" data-text="KODE_">KODE_</h1>
+        
+        <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-8 flex justify-center items-center">
+            <span class="glitch" data-text="KODE">KODE</span><span class="neon-text terminal-blink">_</span>
+        </h1>
+        
         <p class="text-gray-400 text-lg md:text-2xl mb-12 max-w-3xl">Infraestructura Digital Integral.<br><span class="text-white font-bold">Selecciona tu Vector de Ataque:</span></p>
 
         <div class="grid md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
@@ -110,14 +118,14 @@
 
     <footer class="py-12 bg-black border-t border-gray-900 text-center z-10 relative">
         <div class="flex justify-center gap-8 text-2xl text-gray-600 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14]"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar LinkedIn de Claudio Núñez"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <p class="text-gray-600 text-xs">© 2026 KODE SpA // Maipú, Chile.</p>
+        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // SISTEMAS DEFENSA Y DESARROLLO<br>Maipú, Chile.</p>
     </footer>
 
-    <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
         // Mobile Menu Logic
