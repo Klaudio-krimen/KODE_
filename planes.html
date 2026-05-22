@@ -3,32 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Planes y Soporte TI</title>
-    <meta name="description" content="Planes de desarrollo web, identidad corporativa y Soporte TI para PYMEs en Chile. Redes, mantenimiento de PC y software a medida.">
-    
+    <title>Kode_ | Precios y Planes — Tecnología para PYMEs en Santiago</title>
+    <meta name="description" content="Precios claros para soporte técnico, sitios web y asesoría tecnológica en Santiago. Sin letras chicas. Kode_ — tu área IT sin contratar una.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
         canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; pointer-events: none; }
         .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
-        .neon-red { color: #ff0055; text-shadow: 0 0 10px rgba(255, 0, 85, 0.6); }
-        .neon-gold { color: #FBBF24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
-        .neon-cyan { color: #06b6d4; text-shadow: 0 0 10px rgba(6, 182, 212, 0.6); }
-        .plan-card { background: rgba(15,15,15,0.85); border: 1px solid #333; transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; }
-        .plan-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .hover-green:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.15); }
-        .hover-blue:hover { border-color: #3B82F6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
-        .hover-purple:hover { border-color: #A855F7; box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); }
-        .hover-red:hover { border-color: #ff0055; box-shadow: 0 0 20px rgba(255, 0, 85, 0.15); }
-        .hover-gold:hover { border-color: #FBBF24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.15); }
-        .hover-cyan:hover { border-color: #06b6d4; box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); }
+        .glass-card { background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease; }
+        .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.15); transform: translateY(-3px); }
         #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
         #mobile-menu.open { transform: translateY(0); }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
+        .precio-tag { background: rgba(57, 255, 20, 0.08); border: 1px solid rgba(57, 255, 20, 0.3); }
+        .section-divider { border-top: 1px solid #1a1a1a; margin: 3rem 0; }
     </style>
 </head>
 <body class="antialiased">
@@ -38,184 +31,246 @@
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
             <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
-                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ SOPORTE ]</a>
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
-                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ ASESORÍA ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-                <a href="planes.html" class="text-[#39FF14] transition-colors">[ PLANES & TI ]</a>
+                <a href="planes.html" class="text-[#39FF14]">[ PLANES ]</a>
             </div>
-            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú de navegación"><i class="fa-solid fa-bars"></i></button>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
             <a href="index.html" class="text-white hover:text-[#39FF14]">HOME</a>
-            <a href="hardware.html" class="text-white hover:text-[#39FF14]">HARDWARE</a>
-            <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
-            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
-            <a href="planes.html" class="text-[#39FF14]">PLANES & TI</a>
+            <a href="hardware.html" class="text-white hover:text-[#39FF14]">SOPORTE TÉCNICO</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">SITIOS WEB</a>
+            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">ASESORÍA</a>
+            <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
+            <a href="planes.html" class="text-[#39FF14]">PLANES</a>
         </div>
     </nav>
 
-    <header class="pt-32 pb-8 px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-white">PROTOCOLOS DE <span class="neon-text">DESPLIEGUE</span></h1>
-        <p class="text-gray-400 max-w-2xl mx-auto text-lg">Planes empaquetados para la creación y lanzamiento de tu marca en internet.</p>
+    <header class="pt-32 pb-12 px-4 text-center max-w-4xl mx-auto">
+        <p class="text-[#39FF14] text-xs tracking-widest mb-4">// PLANES Y PRECIOS</p>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white">Precios claros.<br><span class="neon-text">Sin letras chicas.</span></h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Todo lo que hacemos tiene precio antes de empezar. Diagnóstico gratis. Presupuesto antes de tocar nada. Así de simple.</p>
     </header>
 
-    <section class="max-w-7xl mx-auto px-4 pb-16 border-b border-gray-800">
-        <div class="grid md:grid-cols-3 gap-6 mb-6">
-            <div class="plan-card hover-green p-8 border-t-4 border-t-[#39FF14]">
-                <h2 class="text-2xl font-bold text-white mb-2">PROTOCOLO <span class="text-[#39FF14]">ALPHA</span></h2>
-                <p class="text-xs text-gray-500 mb-6 uppercase tracking-wider">Identidad Base</p>
-                <div class="text-3xl font-bold text-white mb-2">Desde $120k</div>
-                <p class="text-sm text-gray-400 mb-6 border-b border-gray-800 pb-4">Para la marca que recién nace.</p>
-                <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-grow">
-                    <li class="flex items-start"><i class="fa-solid fa-check text-[#39FF14] mt-1 mr-3"></i> Diseño de Logotipo y variantes.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-[#39FF14] mt-1 mr-3"></i> Manual de Marca Express.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-[#39FF14] mt-1 mr-3"></i> Kit Redes Sociales.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Cotizar Protocolo ALPHA" target="_blank" rel="noopener noreferrer" class="w-full block text-center border border-[#39FF14] text-[#39FF14] py-2 font-bold hover:bg-[#39FF14] hover:text-black transition-colors">COTIZAR</a>
-            </div>
+    <div class="max-w-6xl mx-auto px-4 pb-20">
 
-            <div class="plan-card hover-blue p-8 border-t-4 border-t-blue-500">
-                <h2 class="text-2xl font-bold text-white mb-2">PROTOCOLO <span class="text-blue-500">BETA</span></h2>
-                <p class="text-xs text-gray-500 mb-6 uppercase tracking-wider">Presencia Digital</p>
-                <div class="text-3xl font-bold text-white mb-2">Desde $280k</div>
-                <p class="text-sm text-gray-400 mb-6 border-b border-gray-800 pb-4">Para ser encontrados en Google.</p>
-                <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-grow">
-                    <li class="flex items-start"><i class="fa-solid fa-plus text-blue-500 mt-1 mr-3"></i> Todo el Protocolo Alpha.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> Landing Page de alto impacto.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> Setup Dominio y Hosting.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Cotizar Protocolo BETA" target="_blank" rel="noopener noreferrer" class="w-full block text-center border border-blue-500 text-blue-500 py-2 font-bold hover:bg-blue-500 hover:text-white transition-colors">COTIZAR</a>
+        <!-- SOPORTE TÉCNICO -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-screwdriver-wrench text-[#39FF14] text-xl"></i>
+                <h2 class="text-2xl font-black text-white">SOPORTE TÉCNICO</h2>
+                <a href="hardware.html" class="text-[#39FF14] text-xs font-bold hover:underline ml-2">ver detalle →</a>
             </div>
-
-            <div class="plan-card hover-purple p-8 border-t-4 border-t-purple-500">
-                <h2 class="text-2xl font-bold text-white mb-2">PROTOCOLO <span class="text-purple-500">GAMMA</span></h2>
-                <p class="text-xs text-gray-500 mb-6 uppercase tracking-wider">E-Commerce & Negocios</p>
-                <div class="text-3xl font-bold text-white mb-2">Desde $480k</div>
-                <p class="text-sm text-gray-400 mb-6 border-b border-gray-800 pb-4">Plataforma transaccional completa.</p>
-                <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-grow">
-                    <li class="flex items-start"><i class="fa-solid fa-plus text-purple-500 mt-1 mr-3"></i> Todo el Protocolo Beta.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-purple-500 mt-1 mr-3"></i> Tienda Online / E-Commerce.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-check text-purple-500 mt-1 mr-3"></i> Integración Webpay y Correos.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Cotizar Protocolo GAMMA" target="_blank" rel="noopener noreferrer" class="w-full block text-center border border-purple-500 text-purple-500 py-2 font-bold hover:bg-purple-500 hover:text-white transition-colors">COTIZAR</a>
+            <div class="glass-card p-0 overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-800 bg-black/40">
+                            <th class="text-left px-6 py-3 text-gray-500 font-normal">Servicio</th>
+                            <th class="text-right px-6 py-3 text-gray-500 font-normal">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Diagnóstico</td>
+                            <td class="px-6 py-4 text-right"><span class="text-[#39FF14] font-bold">GRATIS</span></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Formateo básico (solo Windows)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$25.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Formateo completo + programas</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$35.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Limpieza interna + pasta térmica</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$20.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Upgrade SSD o RAM (mano de obra)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">Desde $10.000 + pieza</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Recuperación de datos</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$40.000 – $80.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Migración de datos entre equipos</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$25.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Eliminación de virus y malware</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$20.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Visita técnica a domicilio / empresa</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">+$10.000</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </section>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="plan-card hover-red p-6 border border-gray-800 flex flex-row items-center justify-between">
-                <div>
-                    <h2 class="text-xl font-bold text-white"><span class="neon-red">DELTA:</span> Seguridad Pyme</h2>
-                    <p class="text-xs text-gray-400 mt-1">Firewall, Backups y Auditoría Web.</p>
+        <!-- SITIOS WEB -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-globe text-[#39FF14] text-xl"></i>
+                <h2 class="text-2xl font-black text-white">SITIOS WEB</h2>
+                <a href="web.html" class="text-[#39FF14] text-xs font-bold hover:underline ml-2">ver detalle →</a>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="glass-card p-6 border-t-2 border-t-[#39FF14]">
+                    <h3 class="text-white font-bold text-lg mb-1">Landing page</h3>
+                    <p class="text-gray-500 text-xs mb-4">1 página · 1 semana</p>
+                    <div class="text-2xl font-black text-[#39FF14] mb-4">$180k – $250k</div>
+                    <ul class="text-xs text-gray-400 space-y-1 mb-6">
+                        <li>✓ Diseño a tu marca</li>
+                        <li>✓ 100% responsive</li>
+                        <li>✓ WhatsApp / formulario de contacto</li>
+                    </ul>
+                    <a href="https://wa.me/56920120902?text=Hola Kode_, quiero cotizar una landing page" target="_blank" rel="noopener noreferrer" class="block text-center border border-[#39FF14] text-[#39FF14] py-2 text-sm font-bold hover:bg-[#39FF14] hover:text-black transition-colors">COTIZAR</a>
                 </div>
-                <div class="text-right">
-                    <div class="text-xl font-bold text-white">Desde $750k</div>
-                    <a href="https://wa.me/56920120902?text=Cotizar DELTA" class="text-[#ff0055] text-xs font-bold hover:underline">VER DETALLES ></a>
+                <div class="glass-card p-6 border-t-2 border-t-[#39FF14]">
+                    <h3 class="text-white font-bold text-lg mb-1">Sitio informativo</h3>
+                    <p class="text-gray-500 text-xs mb-4">Hasta 5 páginas · 2-3 semanas</p>
+                    <div class="text-2xl font-black text-[#39FF14] mb-4">$350k – $500k</div>
+                    <ul class="text-xs text-gray-400 space-y-1 mb-6">
+                        <li>✓ WordPress (editable por ti)</li>
+                        <li>✓ SEO local configurado</li>
+                        <li>✓ Google Maps integrado</li>
+                    </ul>
+                    <a href="https://wa.me/56920120902?text=Hola Kode_, quiero cotizar un sitio informativo" target="_blank" rel="noopener noreferrer" class="block text-center border border-[#39FF14] text-[#39FF14] py-2 text-sm font-bold hover:bg-[#39FF14] hover:text-black transition-colors">COTIZAR</a>
+                </div>
+                <div class="glass-card p-6 border-t-2 border-t-[#39FF14]">
+                    <h3 class="text-white font-bold text-lg mb-1">Sitio con blog + SEO</h3>
+                    <p class="text-gray-500 text-xs mb-4">Posicionamiento Google · 3-4 semanas</p>
+                    <div class="text-2xl font-black text-[#39FF14] mb-4">$500k – $700k</div>
+                    <ul class="text-xs text-gray-400 space-y-1 mb-6">
+                        <li>✓ Blog + categorías</li>
+                        <li>✓ SEO técnico completo</li>
+                        <li>✓ Google Search Console</li>
+                    </ul>
+                    <a href="https://wa.me/56920120902?text=Hola Kode_, quiero cotizar un sitio con blog y SEO" target="_blank" rel="noopener noreferrer" class="block text-center border border-[#39FF14] text-[#39FF14] py-2 text-sm font-bold hover:bg-[#39FF14] hover:text-black transition-colors">COTIZAR</a>
+                </div>
+                <div class="glass-card p-6 border-t-2 border-t-[#39FF14]">
+                    <h3 class="text-white font-bold text-lg mb-1">Tienda online</h3>
+                    <p class="text-gray-500 text-xs mb-4">WooCommerce · 4-5 semanas</p>
+                    <div class="text-2xl font-black text-[#39FF14] mb-4">$600k – $900k</div>
+                    <ul class="text-xs text-gray-400 space-y-1 mb-6">
+                        <li>✓ Hasta 20 productos</li>
+                        <li>✓ Carrito de compras</li>
+                        <li>✓ Compatible Webpay / MercadoPago</li>
+                    </ul>
+                    <a href="https://wa.me/56920120902?text=Hola Kode_, quiero cotizar una tienda online" target="_blank" rel="noopener noreferrer" class="block text-center border border-[#39FF14] text-[#39FF14] py-2 text-sm font-bold hover:bg-[#39FF14] hover:text-black transition-colors">COTIZAR</a>
                 </div>
             </div>
-            <div class="plan-card hover-gold p-6 border border-gray-800 flex flex-row items-center justify-between">
-                <div>
-                    <h2 class="text-xl font-bold text-white"><span class="neon-gold">OMEGA:</span> 360 Corporate</h2>
-                    <p class="text-xs text-gray-400 mt-1">Web, Seguridad, Hardware y Audiovisual.</p>
+            <p class="text-gray-600 text-xs mt-4 text-center">Dominio + hosting: $80.000/año · Mantenimiento mensual: $30.000–$50.000/mes</p>
+        </section>
+
+        <!-- ASESORÍA & SOFTWARE -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-comments text-[#39FF14] text-xl"></i>
+                <h2 class="text-2xl font-black text-white">ASESORÍA & SOFTWARE</h2>
+                <a href="ciberseguridad.html" class="text-[#39FF14] text-xs font-bold hover:underline ml-2">ver detalle →</a>
+            </div>
+            <div class="glass-card p-0 overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-800 bg-black/40">
+                            <th class="text-left px-6 py-3 text-gray-500 font-normal">Servicio</th>
+                            <th class="text-right px-6 py-3 text-gray-500 font-normal">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Sesión de asesoría (1 hora)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$30.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Paquete 3 sesiones de asesoría</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$75.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Auditoría tecnológica PYME (informe escrito)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$80.000 – $120.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Implementación CRM (HubSpot / Zoho / Pipedrive)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$150.000 – $250.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Facturación electrónica SII (Bsale / Nubox)</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$120.000 – $180.000</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="px-6 py-4 text-gray-300">Implementación ERP completo</td>
+                            <td class="px-6 py-4 text-right text-white font-bold">$300.000 – $600.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SOPORTE MENSUAL -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-headset text-[#39FF14] text-xl"></i>
+                <h2 class="text-2xl font-black text-white">SOPORTE MENSUAL</h2>
+            </div>
+            <div class="glass-card p-8 border-2 border-[#39FF14]/30 bg-gradient-to-br from-[rgba(57,255,20,0.03)] to-transparent">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Tu área IT externalizada</h3>
+                        <p class="text-gray-400 text-sm mb-4 max-w-lg">Consultas ilimitadas por WhatsApp, soporte remoto ante problemas técnicos y revisión mensual de sistemas. Para empresas que no quieren sorpresas tecnológicas.</p>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>✓ Respuesta en menos de 2 horas hábiles</li>
+                            <li>✓ Soporte remoto incluido</li>
+                            <li>✓ Visitas presenciales con descuento</li>
+                            <li>✓ Incluye soporte post-implementación de proyectos</li>
+                        </ul>
+                    </div>
+                    <div class="text-center md:text-right flex-shrink-0">
+                        <div class="text-4xl font-black text-[#39FF14] mb-1">$40.000</div>
+                        <p class="text-gray-500 text-xs mb-4">/ mes</p>
+                        <a href="https://wa.me/56920120902?text=Hola Kode_, me interesa el soporte mensual" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#39FF14] text-black font-bold px-6 py-3 hover:bg-white transition-colors text-sm">CONTRATAR →</a>
+                    </div>
                 </div>
-                <div class="text-right">
-                    <div class="text-xl font-bold text-white">Desde $1.1M</div>
-                    <a href="https://wa.me/56920120902?text=Cotizar OMEGA" class="text-[#FBBF24] text-xs font-bold hover:underline">VER DETALLES ></a>
-                </div>
             </div>
+        </section>
+
+        <div class="text-center border-t border-gray-900 pt-12">
+            <p class="text-gray-500 text-sm mb-2">¿Tienes dudas sobre qué plan necesitas?</p>
+            <p class="text-gray-600 text-xs mb-6">La primera sesión de asesoría existe exactamente para eso.</p>
+            <a href="https://wa.me/56920120902?text=Hola Kode_, quiero consultar sobre sus servicios" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#39FF14] text-black font-bold px-8 py-3 hover:bg-white transition-colors">HABLAR CON KODE_ →</a>
         </div>
-    </section>
+    </div>
 
-    <section class="max-w-7xl mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">SOPORTE TI & <span class="neon-cyan">REDES</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg">Soluciones técnicas accesibles para mantener tu negocio u oficina operativa. Especialistas en PYMEs y emprendedores.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="plan-card hover-cyan p-8 border-l-4 border-l-[#06b6d4]">
-                <div class="text-[#06b6d4] text-4xl mb-4"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">Mantenimiento de Equipos</h3>
-                <p class="text-sm text-gray-400 mb-6">Rescate y optimización de computadores y notebooks lentos.</p>
-                <div class="text-2xl font-bold text-white mb-6">Desde $25.000</div>
-                <ul class="space-y-2 text-sm text-gray-300 mb-8 flex-grow">
-                    <li>- Formateo e instalación de Windows/OS.</li>
-                    <li>- Limpieza física y cambio pasta térmica.</li>
-                    <li>- Upgrade a Disco Sólido (SSD) y RAM.</li>
-                    <li>- Eliminación de virus de oficina.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Necesito soporte técnico para PC" target="_blank" rel="noopener noreferrer" class="text-center text-[#06b6d4] font-bold hover:text-white transition-colors border border-[#06b6d4] py-2 rounded-sm w-full block">SOLICITAR ASISTENCIA</a>
-            </div>
-
-            <div class="plan-card hover-cyan p-8 border-l-4 border-l-[#06b6d4]">
-                <div class="text-[#06b6d4] text-4xl mb-4"><i class="fa-solid fa-network-wired"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">Redes y Conectividad</h3>
-                <p class="text-sm text-gray-400 mb-6">¿Internet lento en la oficina? Diseñamos e instalamos tu red.</p>
-                <div class="text-2xl font-bold text-white mb-6">Desde $45.000 <span class="text-xs text-gray-500 font-normal">+ materiales</span></div>
-                <ul class="space-y-2 text-sm text-gray-300 mb-8 flex-grow">
-                    <li>- Cableado de red (LAN) para oficinas.</li>
-                    <li>- Extensión de señal y Redes Mesh (Wi-Fi).</li>
-                    <li>- Configuración de Routers y Switch.</li>
-                    <li>- Conexión de impresoras y discos de red.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Necesito instalar o mejorar mi red" target="_blank" rel="noopener noreferrer" class="text-center text-[#06b6d4] font-bold hover:text-white transition-colors border border-[#06b6d4] py-2 rounded-sm w-full block">AGENDAR VISITA</a>
-            </div>
-
-            <div class="plan-card hover-green p-8 border-l-4 border-l-[#39FF14] bg-gradient-to-br from-[rgba(15,15,15,0.85)] to-[rgba(10,30,10,0.85)]">
-                <div class="text-[#39FF14] text-4xl mb-4"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">Software y Apps a Medida</h3>
-                <p class="text-sm text-gray-400 mb-6">Automatizamos los procesos de tu empresa con código propio.</p>
-                <div class="text-2xl font-bold text-[#39FF14] mb-6">Proyecto a Medida</div>
-                <ul class="space-y-2 text-sm text-gray-300 mb-8 flex-grow">
-                    <li>- Sistemas de Inventario y Gestión.</li>
-                    <li>- Aplicaciones móviles Android/iOS.</li>
-                    <li>- Intranets corporativas.</li>
-                    <li>- Automatización de bases de datos.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Quiero cotizar un software a medida" target="_blank" rel="noopener noreferrer" class="text-center bg-[#39FF14] text-black font-bold hover:bg-white transition-colors py-2 rounded-sm w-full block">EVALUAR PROYECTO</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-black border-t border-gray-900 text-center relative z-10">
+    <footer class="py-12 bg-black border-t border-gray-900 text-center z-10 relative">
         <div class="flex justify-center gap-8 text-2xl text-gray-600 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar LinkedIn de Claudio Núñez"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="LinkedIn de Claudio"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // SISTEMAS DEFENSA Y DESARROLLO<br>Maipú, Chile.</p>
+        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // Soporte Técnico & Tecnología para Negocios<br>Santiago, Chile.</p>
     </footer>
 
     <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if(isMenuOpen) { mobileMenu.classList.add('open'); menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'; } 
-            else { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }
-        });
-
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        let width, height, columns, drops;
-        const fontSize = 14;
-        const chars = 'KODE_01'.split('');
-        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; columns = width / fontSize; drops = []; for (let x = 0; x < columns; x++) drops[x] = 1; }
-        resize(); window.addEventListener('resize', resize);
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function draw() {
-            if (prefersReducedMotion) return;
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)'; ctx.fillRect(0, 0, width, height); ctx.fillStyle = '#0F0'; ctx.font = fontSize + 'px monospace';
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)]; ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > height && Math.random() > 0.975) { drops[i] = 0; } drops[i]++;
-            }
-            requestAnimationFrame(draw);
-        }
-        if (!prefersReducedMotion) draw();
+        const menuBtn=document.getElementById('menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+        let isMenuOpen=false;
+        menuBtn.addEventListener('click',()=>{ isMenuOpen=!isMenuOpen; if(isMenuOpen){mobileMenu.classList.add('open');menuBtn.innerHTML='<i class="fa-solid fa-xmark"></i>';}else{mobileMenu.classList.remove('open');menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';}});
+        const canvas=document.getElementById('matrix'),ctx=canvas.getContext('2d');
+        let width,height,columns,drops;const fontSize=14;const chars='KODE_01'.split('');
+        function resize(){width=canvas.width=window.innerWidth;height=canvas.height=window.innerHeight;columns=width/fontSize;drops=[];for(let x=0;x<columns;x++)drops[x]=1;}
+        resize();window.addEventListener('resize',resize);
+        const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function draw(){if(prefersReducedMotion)return;ctx.fillStyle='rgba(5,5,5,0.05)';ctx.fillRect(0,0,width,height);ctx.fillStyle='#0F0';ctx.font=fontSize+'px monospace';for(let i=0;i<drops.length;i++){ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*fontSize,drops[i]*fontSize);if(drops[i]*fontSize>height&&Math.random()>0.975)drops[i]=0;drops[i]++;}requestAnimationFrame(draw);}
+        if(!prefersReducedMotion)draw();
     </script>
 </body>
 </html>

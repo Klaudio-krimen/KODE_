@@ -1,85 +1,178 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Hardware & Gaming</title>
-    <meta name="description" content="Servicio técnico de PC Gamer en Maipú. Armado de computadores, limpieza térmica y upgrade de componentes.">
+    <title>Kode_ | Soporte Técnico — Reparación y Formateo de Equipos en Santiago</title>
+    <meta name="description" content="Reparación de notebooks y PCs en Santiago. Diagnóstico gratis, formateo, limpieza térmica, cambio de SSD y RAM. Atención el mismo día. Kode_ — Santiago RM.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
+        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; pointer-events: none; }
         .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
-        .tech-img { filter: grayscale(100%) contrast(1.1); border: 1px solid #333; transition: all 0.5s; }
-        .tech-img:hover { filter: grayscale(0%); border-color: #39FF14; }
+        .glass-card { background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease; }
+        .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.15); }
         #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
         #mobile-menu.open { transform: translateY(0); }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
+        .precio-tag { background: rgba(57, 255, 20, 0.08); border: 1px solid rgba(57, 255, 20, 0.3); }
     </style>
 </head>
 <body class="antialiased">
+    <canvas id="matrix"></canvas>
+
     <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
             <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
-                <a href="hardware.html" class="text-[#39FF14]">[ HARDWARE ]</a>
+                <a href="hardware.html" class="text-[#39FF14]">[ SOPORTE ]</a>
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
-                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ ASESORÍA ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES & TI ]</a>
+                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES ]</a>
             </div>
-            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú de navegación"><i class="fa-solid fa-bars"></i></button>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
         </div>
         <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
             <a href="index.html" class="text-white hover:text-[#39FF14]">HOME</a>
-            <a href="hardware.html" class="text-[#39FF14]">HARDWARE</a>
-            <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
-            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
+            <a href="hardware.html" class="text-[#39FF14]">SOPORTE TÉCNICO</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">SITIOS WEB</a>
+            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">ASESORÍA</a>
             <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
-            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES & TI</a>
+            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES</a>
         </div>
     </nav>
 
-    <div class="max-w-6xl mx-auto px-6 py-24">
-        <h1 class="text-5xl font-bold mb-4 text-white">HARDWARE <span class="neon-text">& GAMING</span></h1>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl">Ingeniería de precisión. Construimos máquinas de guerra digital optimizadas para el máximo rendimiento.</p>
+    <header class="pt-32 pb-12 px-4 text-center max-w-4xl mx-auto">
+        <p class="text-[#39FF14] text-xs tracking-widest mb-4">// SOPORTE TÉCNICO</p>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white">Tu equipo en manos<br>de alguien que <span class="neon-text">sabe lo que hace.</span></h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Diagnóstico gratis. Presupuesto antes de tocar nada. Si no tiene solución viable, te lo decimos honestamente.</p>
+        <a href="https://wa.me/56920120902?text=Hola Kode_, necesito soporte técnico para mi equipo" target="_blank" rel="noopener noreferrer" class="inline-block mt-8 bg-[#39FF14] text-black font-bold px-8 py-3 hover:bg-white transition-colors">ESCRÍBENOS AL WHATSAPP →</a>
+    </header>
 
-        <div class="grid md:grid-cols-2 gap-12 mb-20">
-            <img src="img/hardware.jpg" class="tech-img w-full h-96 object-cover" alt="PC Build Setup">
-            <div class="flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-4">// SERVICIOS TÁCTICOS</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li class="border-l-2 border-[#39FF14] pl-4"><strong class="text-white block">Armado Master Race</strong>Selección de componentes, gestión de cables invisible y configuración de BIOS.</li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#39FF14] transition-colors"><strong class="text-white block">Mantenimiento Térmico</strong>Cambio de pasta térmica, limpieza ultrasónica y optimización de flujo de aire.</li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#39FF14] transition-colors"><strong class="text-white block">Diagnóstico de Placa</strong>Reparación electrónica, reflow y detección de cortos.</li>
-                </ul>
-                <a href="https://wa.me/56920120902?text=Hola KODE, necesito servicio de Hardware" target="_blank" rel="noopener noreferrer" class="mt-8 bg-[#39FF14] text-black font-bold py-3 px-6 text-center hover:opacity-90 rounded">COTIZAR BUILD</a>
+    <section class="max-w-6xl mx-auto px-4 pb-8">
+        <div class="glass-card p-6 border-l-4 border-l-[#39FF14] mb-4">
+            <p class="text-[#39FF14] font-bold text-sm mb-1">// CÓMO FUNCIONA</p>
+            <p class="text-gray-300 text-sm">1. Nos traes o describes el equipo → 2. Lo revisamos gratis → 3. Te mandamos el presupuesto → 4. Tú decides si seguimos → 5. Listo, generalmente el mismo día.</p>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 pb-20">
+        <h2 class="text-2xl font-black text-white mb-8 mt-4">// SERVICIOS Y PRECIOS</h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-magnifying-glass text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Diagnóstico</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">GRATIS</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Revisamos el equipo, identificamos el problema y te explicamos qué pasó. Sin costo, sin compromiso. Si no vale la pena repararlo, te lo decimos.</p>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-rotate text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Formateo básico</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$25.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Instalación limpia de Windows 10 u 11. El equipo queda como nuevo en rendimiento. Listo el mismo día.</p>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-list-check text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Formateo completo + programas</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$35.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Windows instalado + todos los programas que necesitas (Office, navegadores, antivirus, drivers). Te lo entregamos listo para trabajar.</p>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-temperature-half text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Limpieza interna + pasta térmica</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$20.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Limpieza profunda del polvo interno y cambio de pasta térmica. Reduce temperatura, mejora rendimiento y alarga la vida del equipo.</p>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-hard-drive text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Upgrade a SSD o RAM</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">Desde $10.000</span> <span class="text-gray-500 text-xs">+ pieza</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">El upgrade más efectivo para un equipo lento. Mano de obra desde $10.000 — la pieza se cotiza según lo que necesites.</p>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-floppy-disk text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Recuperación de datos</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$40.000 – $80.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Recuperamos fotos, documentos y archivos de discos dañados. Diagnóstico gratis, cobro solo si recuperamos algo.</p>
             </div>
         </div>
-    </div>
-    
+
+        <div class="glass-card p-6 border border-gray-800 mb-12">
+            <h3 class="text-white font-bold mb-4">// OTROS SERVICIOS</h3>
+            <div class="grid md:grid-cols-2 gap-3 text-sm text-gray-400">
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Cambio pantalla notebook (mano de obra)</span><span class="text-white font-bold">$20.000 + pantalla</span></div>
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Configuración correo + Office 365</span><span class="text-white font-bold">$15.000</span></div>
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Migración de datos entre equipos</span><span class="text-white font-bold">$25.000</span></div>
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Configuración red / router empresa</span><span class="text-white font-bold">$20.000 – $40.000</span></div>
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Eliminación de virus y malware</span><span class="text-white font-bold">$20.000</span></div>
+                <div class="flex justify-between border-b border-gray-800 pb-2"><span>Visita técnica a domicilio / empresa</span><span class="text-white font-bold">+$10.000</span></div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="text-gray-500 text-sm mb-6">¿Tienes algo que no está en la lista? Igual escríbenos — si podemos ayudarte, te decimos cómo.</p>
+            <a href="https://wa.me/56920120902?text=Hola Kode_, necesito soporte técnico para mi equipo" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#39FF14] text-black font-bold px-8 py-3 hover:bg-white transition-colors">CONSULTAR AL WHATSAPP →</a>
+        </div>
+    </section>
+
     <footer class="py-12 bg-black border-t border-gray-900 text-center z-10 relative">
         <div class="flex justify-center gap-8 text-2xl text-gray-600 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar LinkedIn de Claudio Núñez"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="LinkedIn de Claudio"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // SISTEMAS DEFENSA Y DESARROLLO<br>Maipú, Chile.</p>
+        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // Soporte Técnico & Tecnología para Negocios<br>Santiago, Chile.</p>
     </footer>
 
     <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if(isMenuOpen) { mobileMenu.classList.add('open'); menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'; } 
-            else { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }
-        });
+        const menuBtn=document.getElementById('menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+        let isMenuOpen=false;
+        menuBtn.addEventListener('click',()=>{ isMenuOpen=!isMenuOpen; if(isMenuOpen){mobileMenu.classList.add('open');menuBtn.innerHTML='<i class="fa-solid fa-xmark"></i>';}else{mobileMenu.classList.remove('open');menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';}});
+        const c=document.getElementById('matrix'),x=c.getContext('2d');
+        let w,h,cols,drops;const font=14;const chars='KODE_01'.split('');
+        function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;cols=w/font;drops=Array(Math.ceil(cols)).fill(1);}
+        resize();window.addEventListener('resize',resize);
+        const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function draw(){if(prefersReducedMotion)return;x.fillStyle='rgba(5,5,5,0.05)';x.fillRect(0,0,w,h);x.fillStyle='#0F0';x.font=font+'px monospace';for(let i=0;i<drops.length;i++){x.fillText(chars[Math.floor(Math.random()*chars.length)],i*font,drops[i]*font);if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;drops[i]++;}requestAnimationFrame(draw);}
+        if(!prefersReducedMotion)draw();
     </script>
 </body>
 </html>

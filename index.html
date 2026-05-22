@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Infraestructura Digital Integral</title>
-    
-    <meta name="description" content="KODE_ - Consultoría empresarial, recursos humanos, contabilidad y administración integral.">
-    
+    <title>Kode_ | Soporte Técnico y Tecnología para tu Negocio — Santiago</title>
+
+    <meta name="description" content="Kode_ — Soporte técnico, reparación de equipos, sitios web y asesoría tecnológica para personas y PYMEs en Santiago de Chile. Diagnóstico gratis. Atención el mismo día.">
     <meta name="google-site-verification" content="UCqAzXu7gPrD0brmUFeLOJJKBTpPR1nBS30kWfj3xDA" />
-    
+    <meta name="keywords" content="técnico computadores Santiago, reparación notebook Santiago, soporte técnico PYME Santiago, sitios web Santiago, formateo PC Santiago, asesoría tecnológica Santiago">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
         canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; pointer-events: none; }
         .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
-        
-        /* Glassmorphism Cards */
-        .glass-card { 
-            background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease; 
+
+        .glass-card {
+            background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease;
             cursor: pointer; position: relative; overflow: hidden;
         }
         .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); transform: translateY(-5px); }
 
-        /* Glitch Title Fix */
         .glitch { position: relative; color: white; mix-blend-mode: lighten; display: inline-block; }
         .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050505; }
         .glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip-path: inset(44% 0 56% 0); animation: glitch-anim 4s infinite alternate-reverse; }
@@ -33,15 +31,12 @@
         @keyframes glitch-anim { 0% { clip-path: inset(10% 0 80% 0); } 100% { clip-path: inset(80% 0 10% 0); } }
         @keyframes glitch-anim2 { 0% { clip-path: inset(30% 0 60% 0); } 100% { clip-path: inset(60% 0 30% 0); } }
 
-        /* === NUEVO: Animación Parpadeo Terminal === */
         @keyframes blink { 50% { opacity: 0; } }
         .terminal-blink { animation: blink 1s step-start infinite; }
 
-        /* Mobile Menu Transition */
         #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
         #mobile-menu.open { transform: translateY(0); }
 
-        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; z-index: 50;
             background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%;
@@ -57,65 +52,81 @@
     <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
-            
+
             <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
-                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ SOPORTE ]</a>
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
-                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ SEGURIDAD ]</a>
+                <a href="ciberseguridad.html" class="hover:text-[#39FF14] transition-colors">[ ASESORÍA ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES & TI ]</a>
+                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES ]</a>
             </div>
 
             <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú de navegación"><i class="fa-solid fa-bars"></i></button>
         </div>
 
         <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
-            <a href="hardware.html" class="text-white hover:text-[#39FF14]">HARDWARE</a>
-            <a href="web.html" class="text-white hover:text-[#39FF14]">WEB DEV</a>
-            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">SEGURIDAD</a>
+            <a href="hardware.html" class="text-white hover:text-[#39FF14]">SOPORTE TÉCNICO</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">SITIOS WEB</a>
+            <a href="ciberseguridad.html" class="text-white hover:text-[#39FF14]">ASESORÍA</a>
             <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
-            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES & TI</a>
+            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES</a>
         </div>
     </nav>
 
     <section class="min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-12 text-center">
-        
+
         <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-8 flex justify-center items-center">
             <span class="glitch" data-text="KODE">KODE</span><span class="neon-text terminal-blink">_</span>
         </h1>
-        
-        <p class="text-gray-400 text-lg md:text-2xl mb-12 max-w-3xl">Infraestructura Digital Integral.<br><span class="text-white font-bold">Selecciona tu Vector de Ataque:</span></p>
+
+        <p class="text-gray-400 text-lg md:text-2xl mb-4 max-w-3xl">Tecnología que funciona. Sin vueltas.</p>
+        <p class="text-gray-600 text-sm md:text-base mb-12 max-w-2xl">Soporte técnico, sitios web y asesoría para personas y PYMEs en Santiago.<br><span class="text-[#39FF14]">// Diagnóstico gratis. Atención el mismo día.</span></p>
 
         <div class="grid md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
             <a href="hardware.html" class="glass-card p-8 group text-left block rounded-sm">
                 <div class="flex justify-between items-start mb-4">
-                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">HARDWARE</h2>
-                    <i class="fa-solid fa-microchip text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">SOPORTE</h2>
+                    <i class="fa-solid fa-screwdriver-wrench text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
                 </div>
-                <p class="text-sm text-gray-500 mb-6">Armado Master Race, Modding y Mantenimiento.</p>
-                <span class="text-[#39FF14] text-xs font-bold tracking-widest">ACCEDER ></span>
+                <p class="text-sm text-gray-500 mb-6">Reparación de equipos, formateo y configuración. Diagnóstico gratis.</p>
+                <span class="text-[#39FF14] text-xs font-bold tracking-widest">VER SERVICIOS ></span>
             </a>
             <a href="web.html" class="glass-card p-8 group text-left block rounded-sm">
                 <div class="flex justify-between items-start mb-4">
-                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">DEV WEB</h2>
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">SITIOS WEB</h2>
                     <i class="fa-solid fa-code text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
                 </div>
-                <p class="text-sm text-gray-500 mb-6">Sitios Corporativos, E-Commerce y SEO.</p>
-                <span class="text-[#39FF14] text-xs font-bold tracking-widest">ACCEDER ></span>
+                <p class="text-sm text-gray-500 mb-6">Landing pages, sitios corporativos y tiendas online. Listo en 2-3 semanas.</p>
+                <span class="text-[#39FF14] text-xs font-bold tracking-widest">VER SERVICIOS ></span>
             </a>
-            <a href="ciberseguridad.html" class="glass-card p-8 group text-left block rounded-sm hover:border-[#ff0055]">
+            <a href="ciberseguridad.html" class="glass-card p-8 group text-left block rounded-sm">
                 <div class="flex justify-between items-start mb-4">
-                    <h2 class="text-2xl font-bold text-white group-hover:text-[#ff0055]">SECURITY</h2>
-                    <i class="fa-solid fa-user-secret text-4xl text-gray-700 group-hover:text-[#ff0055]"></i>
+                    <h2 class="text-2xl font-bold text-white group-hover:text-[#39FF14]">ASESORÍA</h2>
+                    <i class="fa-solid fa-chart-line text-4xl text-gray-700 group-hover:text-[#39FF14]"></i>
                 </div>
-                <p class="text-sm text-gray-500 mb-6">Defensa Activa, Pentesting y Datos.</p>
-                <span class="text-[#ff0055] text-xs font-bold tracking-widest">ACCEDER ></span>
+                <p class="text-sm text-gray-500 mb-6">CRM, ERP, facturación electrónica y consultoría tech para tu negocio.</p>
+                <span class="text-[#39FF14] text-xs font-bold tracking-widest">VER SERVICIOS ></span>
             </a>
         </div>
-        
-        <div class="mt-16 flex gap-6 justify-center">
-            <a href="planes.html" class="text-black font-bold bg-[#39FF14] px-6 py-2 rounded hover:bg-white transition-colors">// VER PLANES Y PRECIOS</a>
-            <a href="nosotros.html" class="text-gray-500 hover:text-white border-b border-gray-600 hover:border-white pb-1 pt-2 transition-colors">15 Años de Trayectoria</a>
+
+        <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="planes.html" class="text-black font-bold bg-[#39FF14] px-6 py-3 rounded hover:bg-white transition-colors">// VER PLANES Y PRECIOS</a>
+            <a href="https://wa.me/56920120902?text=Hola Kode_, quiero consultar sobre sus servicios" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#39FF14] border-b border-gray-600 hover:border-[#39FF14] pb-1 pt-2 transition-colors">Escríbenos al WhatsApp →</a>
+        </div>
+
+        <div class="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto text-center">
+            <div>
+                <p class="text-2xl font-black text-[#39FF14]">+15</p>
+                <p class="text-xs text-gray-600 mt-1">años de experiencia</p>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-[#39FF14]">$0</p>
+                <p class="text-xs text-gray-600 mt-1">el diagnóstico</p>
+            </div>
+            <div>
+                <p class="text-2xl font-black text-[#39FF14]">1 día</p>
+                <p class="text-xs text-gray-600 mt-1">tiempo de respuesta</p>
+            </div>
         </div>
     </section>
 
@@ -125,13 +136,12 @@
             <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar LinkedIn de Claudio Núñez"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // SISTEMAS DEFENSA Y DESARROLLO<br>Maipú, Chile.</p>
+        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // Soporte Técnico & Tecnología para Negocios<br>Santiago, Chile.</p>
     </footer>
 
     <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
-        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let isMenuOpen = false;
@@ -146,31 +156,30 @@
             }
         });
 
-        // Optimized Matrix (requestAnimationFrame)
         const c=document.getElementById('matrix'),x=c.getContext('2d');
         let w,h,cols,drops;
         const font=14;
         const chars='KODE_01'.split('');
-        
+
         function resize(){
             w=c.width=window.innerWidth;
             h=c.height=window.innerHeight;
             cols=w/font;
             drops=Array(Math.ceil(cols)).fill(1);
         }
-        
-        resize(); 
+
+        resize();
         window.addEventListener('resize', resize);
-        
+
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
+
         function draw(){
             if(prefersReducedMotion) return;
             x.fillStyle='rgba(5,5,5,0.05)';
             x.fillRect(0,0,w,h);
             x.fillStyle='#0F0';
             x.font=font+'px monospace';
-            
+
             for(let i=0;i<drops.length;i++){
                 x.fillText(chars[Math.floor(Math.random()*chars.length)],i*font,drops[i]*font);
                 if(drops[i]*font>h&&Math.random()>0.975) drops[i]=0;
@@ -178,7 +187,7 @@
             }
             requestAnimationFrame(draw);
         }
-        
+
         if(!prefersReducedMotion) draw();
     </script>
 </body>

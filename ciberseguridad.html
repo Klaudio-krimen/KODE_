@@ -1,85 +1,193 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODE_ | Ciberseguridad</title>
-    <meta name="description" content="Auditorías de Ciberseguridad, Ethical Hacking y Recuperación de Datos en Chile. Protege tu empresa con KODE.">
+    <title>Kode_ | Asesoría Tecnológica y Software para PYMEs en Santiago</title>
+    <meta name="description" content="Asesoría tecnológica, implementación de CRM y ERP, facturación electrónica y software para PYMEs en Santiago. Kode_ — tu área IT sin contratar una.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; }
-        .neon-red { color: #ff0055; text-shadow: 0 0 10px rgba(255, 0, 85, 0.6); }
-        .tech-img { filter: grayscale(100%) contrast(1.5) brightness(0.6); border: 1px solid #ff0055; transition: all 0.5s; }
-        .tech-img:hover { filter: grayscale(0%); }
+        body { font-family: 'JetBrains Mono', monospace; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: -10; opacity: 0.15; pointer-events: none; }
+        .neon-text { color: #39FF14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
+        .glass-card { background: rgba(20,20,20,0.8); border: 1px solid #333; transition: all 0.3s ease; }
+        .glass-card:hover { border-color: #39FF14; box-shadow: 0 0 20px rgba(57, 255, 20, 0.15); }
         #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateY(-100%); }
         #mobile-menu.open { transform: translateY(0); }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
+        .precio-tag { background: rgba(57, 255, 20, 0.08); border: 1px solid rgba(57, 255, 20, 0.3); }
     </style>
 </head>
 <body class="antialiased">
+    <canvas id="matrix"></canvas>
+
     <nav class="fixed w-full z-50 top-0 border-b border-gray-900 bg-black/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="text-[#39FF14]">_</span></a>
+            <a href="index.html" class="text-xl font-bold tracking-widest text-white z-50">KODE<span class="neon-text">_</span></a>
             <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400">
-                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ HARDWARE ]</a>
+                <a href="hardware.html" class="hover:text-[#39FF14] transition-colors">[ SOPORTE ]</a>
                 <a href="web.html" class="hover:text-[#39FF14] transition-colors">[ WEB ]</a>
-                <a href="ciberseguridad.html" class="text-[#ff0055]">[ SEGURIDAD ]</a>
+                <a href="ciberseguridad.html" class="text-[#39FF14]">[ ASESORÍA ]</a>
                 <a href="nosotros.html" class="hover:text-[#39FF14] transition-colors">[ NOSOTROS ]</a>
-                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES & TI ]</a>
+                <a href="planes.html" class="hover:text-[#39FF14] transition-colors">[ PLANES ]</a>
             </div>
-            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú de navegación"><i class="fa-solid fa-bars"></i></button>
+            <button id="menu-btn" class="md:hidden text-white text-2xl z-50 focus:outline-none" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
         </div>
-        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#ff0055]">
-            <a href="index.html" class="text-white hover:text-[#ff0055]">HOME</a>
-            <a href="hardware.html" class="text-white hover:text-[#ff0055]">HARDWARE</a>
-            <a href="web.html" class="text-white hover:text-[#ff0055]">WEB DEV</a>
-            <a href="ciberseguridad.html" class="text-[#ff0055]">SEGURIDAD</a>
-            <a href="nosotros.html" class="text-white hover:text-[#ff0055]">NOSOTROS</a>
-            <a href="planes.html" class="text-white hover:text-[#ff0055]">PLANES & TI</a>
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-8 text-xl font-bold z-40 md:hidden border-b border-[#39FF14]">
+            <a href="index.html" class="text-white hover:text-[#39FF14]">HOME</a>
+            <a href="hardware.html" class="text-white hover:text-[#39FF14]">SOPORTE TÉCNICO</a>
+            <a href="web.html" class="text-white hover:text-[#39FF14]">SITIOS WEB</a>
+            <a href="ciberseguridad.html" class="text-[#39FF14]">ASESORÍA</a>
+            <a href="nosotros.html" class="text-white hover:text-[#39FF14]">NOSOTROS</a>
+            <a href="planes.html" class="text-white hover:text-[#39FF14]">PLANES</a>
         </div>
     </nav>
 
-    <div class="max-w-6xl mx-auto px-6 py-24">
-        <h1 class="text-5xl font-bold mb-4 text-white">CIBER<span class="neon-red">SEGURIDAD</span></h1>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl">El mundo digital es un campo de batalla. Nosotros somos tu escudo. Protección ofensiva y defensiva.</p>
+    <header class="pt-32 pb-12 px-4 text-center max-w-4xl mx-auto">
+        <p class="text-[#39FF14] text-xs tracking-widest mb-4">// ASESORÍA & SOFTWARE</p>
+        <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white">Tu negocio ordenado.<br><span class="neon-text">Sin adivinar qué herramienta usar.</span></h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Te ayudamos a elegir, implementar y aprender a usar las herramientas digitales correctas para tu PYME. Sin sobrevender, sin complicar.</p>
+        <a href="https://wa.me/56920120902?text=Hola Kode_, necesito asesoría tecnológica para mi negocio" target="_blank" rel="noopener noreferrer" class="inline-block mt-8 bg-[#39FF14] text-black font-bold px-8 py-3 hover:bg-white transition-colors">AGENDAR ASESORÍA →</a>
+    </header>
 
-        <div class="grid md:grid-cols-2 gap-12 mb-20">
-            <img src="img/ciberseguridad.jpg" class="tech-img w-full h-96 object-cover" alt="Hacker Security">
-            <div class="flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-4">// PROTOCOLOS DE DEFENSA</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li class="border-l-2 border-[#ff0055] pl-4"><strong class="text-white block">Ethical Hacking</strong>Simulamos ataques reales para encontrar tus debilidades antes que los criminales.</li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors"><strong class="text-white block">Eliminación de Malware</strong>Limpieza profunda de virus, ransomware y spyware.</li>
-                    <li class="border-l-2 border-gray-700 pl-4 hover:border-[#ff0055] transition-colors"><strong class="text-white block">Informática Forense</strong>Recuperación de datos borrados o encriptados.</li>
+    <section class="max-w-6xl mx-auto px-4 pb-8">
+        <div class="glass-card p-6 border-l-4 border-l-[#39FF14] mb-8">
+            <p class="text-[#39FF14] font-bold text-sm mb-1">// EL PROBLEMA QUE RESOLVEMOS</p>
+            <p class="text-gray-300 text-sm">La mayoría de las PYMEs en Santiago gasta en tecnología que no usa bien, o no tiene la tecnología que necesita. Una sesión de asesoría puede ahorrarte meses de errores y miles de pesos en software equivocado.</p>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 pb-20">
+        <h2 class="text-2xl font-black text-white mb-8">// SERVICIOS</h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-comments text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Asesoría tecnológica</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$30.000 / hora</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Sesión de 60 minutos (presencial o videollamada) para definir qué necesitas, qué herramientas usar y por dónde empezar. Sales con un plan concreto, no con más dudas.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Paquete 3 sesiones: $75.000</li>
+                    <li>✓ Asesoría compra de equipos: $20.000</li>
                 </ul>
-                <a href="https://wa.me/56920120902?text=URGENTE: Necesito Ciberseguridad" target="_blank" rel="noopener noreferrer" class="mt-8 bg-[#ff0055] text-white font-bold py-3 px-6 text-center hover:bg-red-700 rounded">SOLICITAR AUDITORÍA</a>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-clipboard-list text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Auditoría tecnológica PYME</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$80.000 – $120.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Revisamos toda la tecnología de tu empresa (equipos, software, conectividad, procesos) y entregamos un informe escrito con recomendaciones concretas priorizadas.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Ideal para PYMEs de 2–15 personas</li>
+                    <li>✓ Entrega en 5-7 días hábiles</li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-users text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Implementación CRM</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$150.000 – $250.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Configuramos HubSpot, Zoho CRM o Pipedrive para tu negocio. Tu equipo aprende a usarlo y queda funcionando. Deja de perder clientes por falta de seguimiento.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Configuración según tu proceso de ventas</li>
+                    <li>✓ Capacitación incluida</li>
+                    <li>✓ Soporte post-implementación disponible</li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-file-invoice text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Facturación electrónica (SII)</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$120.000 – $180.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Implementamos Bsale, Nubox u otro sistema de facturación electrónica conectado al SII. Tu negocio factura correctamente desde el primer día.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Compatible con SII Chile</li>
+                    <li>✓ Capacitación a tu equipo</li>
+                    <li>✓ Integración con tu flujo de caja</li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-gears text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Implementación ERP completo</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$300.000 – $600.000</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Sistema de gestión completo: ventas, inventario, facturación y reportes. Para negocios que ya crecieron y necesitan orden total. Defontana, Nubox ERP u otros.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Diagnóstico previo incluido</li>
+                    <li>✓ Capacitación en terreno</li>
+                    <li>✓ Soporte mensual disponible: $40.000/mes</li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8">
+                <div class="flex items-start gap-4 mb-4">
+                    <i class="fa-solid fa-headset text-[#39FF14] text-3xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Soporte mensual tech</h3>
+                        <div class="precio-tag inline-block px-3 py-1 mt-2 rounded-sm"><span class="text-[#39FF14] font-bold">$40.000 / mes</span></div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Tu área IT externalizada. Consultas ilimitadas por WhatsApp, soporte remoto ante problemas técnicos y revisión mensual de sistemas. Para empresas que no quieren sorpresas.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ Respuesta en menos de 2 horas</li>
+                    <li>✓ Visitas presenciales con descuento</li>
+                </ul>
             </div>
         </div>
-    </div>
-    
+
+        <div class="text-center mt-4">
+            <p class="text-gray-500 text-sm mb-6">¿No estás seguro de qué necesitas? La primera sesión de asesoría existe exactamente para eso.</p>
+            <a href="https://wa.me/56920120902?text=Hola Kode_, quiero agendar una asesoría tecnológica" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#39FF14] text-black font-bold px-8 py-3 hover:bg-white transition-colors">AGENDAR PRIMERA SESIÓN →</a>
+        </div>
+    </section>
+
     <footer class="py-12 bg-black border-t border-gray-900 text-center z-10 relative">
         <div class="flex justify-center gap-8 text-2xl text-gray-600 mb-8">
-            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Visitar LinkedIn de Claudio Núñez"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/somoskode_/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Instagram de KODE"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/somoskode?locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="Facebook de KODE"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/claudio-nu%C3%B1ez-732936288/" target="_blank" rel="noopener noreferrer" class="hover:text-[#39FF14] transition-colors" aria-label="LinkedIn de Claudio"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // SISTEMAS DEFENSA Y DESARROLLO<br>Maipú, Chile.</p>
+        <p class="text-gray-600 text-xs font-mono">© 2026 KODE SpA // Soporte Técnico & Tecnología para Negocios<br>Santiago, Chile.</p>
     </footer>
 
     <a href="https://wa.me/56920120902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if(isMenuOpen) { mobileMenu.classList.add('open'); menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'; } 
-            else { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }
-        });
+        const menuBtn=document.getElementById('menu-btn'),mobileMenu=document.getElementById('mobile-menu');
+        let isMenuOpen=false;
+        menuBtn.addEventListener('click',()=>{ isMenuOpen=!isMenuOpen; if(isMenuOpen){mobileMenu.classList.add('open');menuBtn.innerHTML='<i class="fa-solid fa-xmark"></i>';}else{mobileMenu.classList.remove('open');menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';}});
+        const c=document.getElementById('matrix'),x=c.getContext('2d');
+        let w,h,cols,drops;const font=14;const chars='KODE_01'.split('');
+        function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;cols=w/font;drops=Array(Math.ceil(cols)).fill(1);}
+        resize();window.addEventListener('resize',resize);
+        const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function draw(){if(prefersReducedMotion)return;x.fillStyle='rgba(5,5,5,0.05)';x.fillRect(0,0,w,h);x.fillStyle='#0F0';x.font=font+'px monospace';for(let i=0;i<drops.length;i++){x.fillText(chars[Math.floor(Math.random()*chars.length)],i*font,drops[i]*font);if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;drops[i]++;}requestAnimationFrame(draw);}
+        if(!prefersReducedMotion)draw();
     </script>
 </body>
 </html>
